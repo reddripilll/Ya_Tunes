@@ -1,3 +1,5 @@
+import { addZero } from './supScript.js';
+
 export const videoPlayerInit = () => {
 	const videoPlayer = document.querySelector('.video-player');
 	const videoButtonPlay = document.querySelector('.video-button__play');
@@ -35,8 +37,6 @@ export const videoPlayerInit = () => {
 	}
 	// Функция для остановки видео
 
-	const addZero = n => n < 10 ? '0' + n : n;
-	// Функция для добавления нулей
 
 	videoPlayer.addEventListener('click', togglePlay);
 	videoButtonPlay.addEventListener('click', togglePlay);
