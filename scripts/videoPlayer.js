@@ -7,8 +7,14 @@ export const videoPlayerInit = () => {
 	const videoProgress = document.querySelector('.video-progress');
 	const videoTimePassed = document.querySelector('.video-time__passed');
 	const videoTimeTotal = document.querySelector('.video-time__total');
+	const videoVolume = document.querySelector('.video-volume');
+	const videoFullscreen = document.querySelector('.video-fullscreen')
 	// Объявление всех переменных 
 
+
+	videoFullscreen.addEventListener('click', () => {
+		videoPlayer.requestFullscreen();
+	})
 
 	const toggleIcon = () => {
 		if (videoPlayer.paused) {
@@ -36,6 +42,11 @@ export const videoPlayerInit = () => {
 		videoPlayer.currentTime = 0;
 	}
 	// Функция для остановки видео
+
+	const changeValue = () => {
+		const valueVolume = videoVolume.value;
+		videoPlayer.volume = valueVolume / 100;
+	}
 
 
 	videoPlayer.addEventListener('click', togglePlay);
@@ -71,4 +82,8 @@ export const videoPlayerInit = () => {
 
 		videoPlayer.currentTime = (value * duration) / 100;
 	})
+
+	videoVolume.addEventListener('input', changeValue);
+
+	changeValue();
 }
